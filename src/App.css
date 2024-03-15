@@ -1,8 +1,8 @@
 .homePageWrapper{
-height:100vh;
+height: 100vh ;
 display:flex;
-align-items:center;
-justify-content:center;
+align-items:center ;
+justify-content:center ;
 color: #fff;
 }
 
@@ -50,6 +50,7 @@ footer a{
 }
 
 .btn{
+  font-weight: bold;
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -64,7 +65,7 @@ footer a{
   margin-left: auto;
 }
 
-.joinBtn:hover{
+.joinBtn:hover, .leaveBtn:hover{
   background: #2b824c;
 }
 
@@ -85,4 +86,66 @@ footer a:hover{
   color: #368654;
   border-color: #368654;
 }
-/* rgb(62, 15, 15) */
+
+.mainWrap{
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  height: 100vh;
+}
+
+.aside{
+  background:#1c111b;
+  padding: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.asideInner{
+ flex: 1;
+}
+
+.clientList{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.client{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.userName{
+  margin-top: 10px;
+}
+
+.logo{
+  border-bottom: 2px solid #918f8f;
+  padding-bottom: 10px;
+}
+
+.logoImg{
+  height: 60px;
+
+}
+
+.leaveBtn{
+  margin-top: 20px;
+  background-color: #4aee88;
+  width: 100%;
+}
+
+.CodeMirror{
+min-height: calc(100vh - 20px);
+font-size: 15px;
+line-height: 1.6;
+padding-top: 20px;
+}
+
+.copyBtn:hover{
+  background-color: #ec87e3;
+}

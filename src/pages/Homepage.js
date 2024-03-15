@@ -10,7 +10,7 @@ const Homepage = () => {
 
     const createNewRoom= (e) =>{
         e.preventDefault();//prevent reloading of page on clicking the join button
-        console.log("first")
+        
         const id=uuidV4();
         setRoomId(id);
         toast.success('Created new room');
@@ -31,9 +31,9 @@ const Homepage = () => {
     };
 
     const handleInputEnter=(e)=>{
-        console.log(e.code)
+        
         if(e.code === 'Enter'){
-            console.log("ssss")
+            
             joinRoom();
         }
     };

@@ -9,6 +9,7 @@ import {useLocation, useNavigate, Navigate, useParams} from 'react-router-dom';
 
 const Editorpage = () => {
   const socketRef =useRef(null);
+  const codeRef= useRef(null);
   const location = useLocation();
   const reactNavigator= useNavigate();
   const {roomId}=useParams();
@@ -35,11 +36,15 @@ function handleErrors(e){
 
       //Listening for joined event
       socketRef.current.on(ACTIONS.JOINED,({clients, username,socketId})=>{
-          if(username!== location.state.username){
+          if(username!== location.state?.username){
             toast.success(`${username} joined the room!!`);
             console.log(`${username} joined`);
           }
           setClients(clients);
+          socketRef.current.emit(ACTIONS.SYNC_CODE,{
+            code: codeRef.current,
+            socketId,
+          });
       });
 
       //Listening for disconnected
@@ -60,6 +65,20 @@ function handleErrors(e){
     }
   },[]);
 
+  async function copyRoomId(){
+    try{
+        await navigator.clipboard.writeText(roomId);
+        toast.success("ROOM ID copied!")
+    } catch(err){
+      toast.error("Couldn't coopy ROOM ID!")
+      console.error(err);
+    }
+  }
+
+  function leaveRoom(){
+    reactNavigator('/');
+  }
+
   if(!location.state){
     <Navigate  to='/' />
   }
@@ -73,15 +92,17 @@ function handleErrors(e){
         <h3>Connected</h3>
         <div className='clientList'>
           {clients.map((client)=>(
-            <Client key={client.socketID} username={client.username}/>
+            <Client key={client.socketId} username={client.username}/>
           ))}
         </div>
       </div>
-      <button className='btn copyBtn'>Copy ROOM ID</button>
-      <button className='btn leaveBtn'>Leave</button>
+      <button className='btn copyBtn' onClick={copyRoomId}>Copy ROOM ID</button>
+      <button className='btn leaveBtn'onClick={leaveRoom} >Leave</button>
     </div>
     <div className='editorWrap'>
-      <Editor socketRef={socketRef} />
+      <Editor socketRef={socketRef} roomId={roomId} onCodeChange={(code)=>{
+        codeRef.current=code;
+      }} />
     </div>
   </div>
 }

@@ -43,6 +43,7 @@ const Editor = ({socketRef,roomId, onCodeChange}) => {
 
     }
     init();
+    /* eslint-disable-next-line*/
   },[]);
 
 
@@ -56,8 +57,10 @@ const Editor = ({socketRef,roomId, onCodeChange}) => {
     }
 
     return ()=>{
+      /* eslint-disable-next-line*/
       socketRef.current.off(ACTIONS.CODE_CHANGE)
     }
+    /* eslint-disable-next-line*/
   },[socketRef.current]);
 
   return (

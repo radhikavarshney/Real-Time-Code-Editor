@@ -1,3 +1,4 @@
+/* eslint-disable padded-blocks */
 import React,{useState} from 'react'
 import {v4 as uuidV4} from "uuid";
 import toast from 'react-hot-toast';
@@ -65,7 +66,8 @@ const Homepage = () => {
                 <button className='btn joinBtn' onClick={joinRoom}>JOIN</button>
                 <span className='createInfo'>
                     If you don't have an invite then create &nbsp;
-                    <a onClick={createNewRoom} href='' className='createNewBtn'>new room</a>
+                    <a onClick={createNewRoom} 
+                    href='javascript:void(0);' className='createNewBtn'>new room</a>
                 </span>
              </div>
 

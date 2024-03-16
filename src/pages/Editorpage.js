@@ -1,3 +1,4 @@
+/* eslint-disable padded-blocks */
 import React, { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast';
 
@@ -63,6 +64,7 @@ function handleErrors(e){
       socketRef.current.off(ACTIONS.JOINED)
       socketRef.current.off(ACTIONS.DISCONNECTED);
     }
+    /* eslint-disable-next-line*/
   },[]);
 
   async function copyRoomId(){
